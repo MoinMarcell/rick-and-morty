@@ -13,13 +13,14 @@ type GalleryProps = {
         gender: string,
         origin: {
             name: string
-        }
+        },
+        episode: string[]
     }[]
 }
 
 export default function Gallery(props: GalleryProps){
     const characterComponent = props.characters.map((character) => {
-        return <Card origin={character.origin} gender={character.gender} species={character.species} url={character.url} key={character.id} name={character.name} image={character.image} status={character.status}/>
+        return <Card episode={character.episode} origin={character.origin} gender={character.gender} species={character.species} url={character.url} key={character.id} name={character.name} image={character.image} status={character.status}/>
     })
 
     return(

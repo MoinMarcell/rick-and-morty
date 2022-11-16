@@ -10,7 +10,8 @@ type CardProps = {
     gender: string,
     origin: {
         name: string
-    }
+    },
+    episode: string[]
 }
 
 export default function Card(props: CardProps){
@@ -31,8 +32,7 @@ export default function Card(props: CardProps){
                     </div>
                     <div className={"card-body text-success"}>
                         <h5 className={"card-title"}>{props.name} from {props.origin.name} <span className="badge bg-success">Alive</span></h5>
-                        <p className={"card-text"}>This is a longer card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.</p>
+                        <p className={"card-text"}>{props.name} has played in {props.episode.length} Episodes! This is amazing!</p>
                         <button type="button" className="btn btn-secondary">Episodes</button>
                     </div>
                 </div>
@@ -55,8 +55,7 @@ export default function Card(props: CardProps){
                     </div>
                     <div className={"card-body text-danger"}>
                         <h5 className={"card-title"}>{props.name} from {props.origin.name} <span className="badge bg-danger">Dead</span></h5>
-                        <p className={"card-text"}>This is a longer card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.</p>
+                        <p className={"card-text"}>{props.name} has played in {props.episode.length} Episodes! This is amazing!</p>
                         <button type="button" className="btn btn-secondary">Episodes</button>
                     </div>
                 </div>
@@ -79,8 +78,7 @@ export default function Card(props: CardProps){
                     </div>
                     <div className={"card-body text-info"}>
                         <h5 className={"card-title"}>{props.name} from {props.origin.name} <span className="badge bg-info">Unknown</span></h5>
-                        <p className={"card-text"}>This is a longer card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.</p>
+                        <p className={"card-text"}>{props.name} has played in {props.episode.length} Episodes! This is amazing!</p>
                         <button type="button" className="btn btn-secondary">Episodes</button>
                     </div>
                 </div>
