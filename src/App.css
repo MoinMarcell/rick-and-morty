@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 body{
     background-color: aquamarine;
-    margin: 0px auto;
-    text-align: center;
+    font-family: 'Comic Neue', cursive;
 }

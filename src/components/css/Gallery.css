@@ -1,6 +1,4 @@
 .Gallery{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
+    background: url("../img/bg.png") fixed no-repeat;
+    background-size: cover;
 }
