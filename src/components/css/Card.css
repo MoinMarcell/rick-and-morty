@@ -16,16 +16,31 @@
     color: black;
     padding: 5px;
     background-color: green;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
 }
 
 .Card span.dead{
     color: black;
     padding: 5px;
     background-color: red;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
 }
 
 .Card span{
     color: black;
     padding: 5px;
     background-color: steelblue;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+}
+
+img{
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
 }
