@@ -1,97 +1,33 @@
 import React from "react";
 import "../css/Card.css"
+import {Character} from "../model/Character";
 
 type CardProps = {
-    name: string,
-    image: string,
-    status: string,
-    url: string,
-    species: string,
-    gender: string,
-    origin: {
-        name: string
-    },
-    episode: string[],
-    location: {
-        name: string
-    }
+    character: Character,
+    deleteCharacter(id: number): void
 }
 
+
 export default function Card(props: CardProps){
-    if(props.status === "Alive"){
-        return(
-            <div className={"col"}>
-                <div className={"card border-success h-100"}>
-                    <div className="hoverText">
-                        <img src={props.image} className={"card-img-top"} alt={props.name} />
-                        <div className="fadedbox">
-                            <div className="title text">
-                                <h3>{props.name}</h3>
-                                <span className="badge text-bg-warning">{props.species}</span>
-                                <br/>
-                                <span className="badge text-bg-warning">{props.gender}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"card-body text-success"}>
-                        <h5 className={"card-title"}>{props.name} <span className="badge bg-success">Alive</span></h5>
-                        <p className={"card-text"}>
-                            {props.name} is located in {props.location.name}, but is originally from {props.origin.name}. {props.name} played in {props.episode.length} Episodes! This is amazing!
-                        </p>
-                        <button type="button" className="btn btn-secondary">Episodes</button>
-                    </div>
-                </div>
-            </div>
-        )
-    }else if(props.status === "Dead"){
-        return(
-            <div className={"col"}>
-                <div className={"card border-danger h-100"}>
-                    <div className="hoverText">
-                        <img src={props.image} className={"card-img-top"} alt={props.name} />
-                        <div className="fadedbox">
-                            <div className="title text">
-                                <h3>{props.name}</h3>
-                                <span className="badge text-bg-warning">{props.species}</span>
-                                <br/>
-                                <span className="badge text-bg-warning">{props.gender}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"card-body text-danger"}>
-                        <h5 className={"card-title"}>{props.name} <span className="badge bg-danger">Dead</span></h5>
-                        <p className={"card-text"}>
-                            {props.name} is located in {props.location.name}, but is originally from {props.origin.name}. {props.name} played in {props.episode.length} Episodes! This is amazing!
-                        </p>
-                        <button type="button" className="btn btn-secondary">Episodes</button>
-                    </div>
-                </div>
-            </div>
-        )
-    }else{
-        return(
-            <div className={"col"}>
-                <div className={"card border-info h-100"}>
-                    <div className="hoverText">
-                        <img src={props.image} className={"card-img-top"} alt={props.name} />
-                        <div className="fadedbox">
-                            <div className="title text">
-                                <h3>{props.name}</h3>
-                                <span className="badge text-bg-warning">{props.species}</span>
-                                <br/>
-                                <span className="badge text-bg-warning">{props.gender}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"card-body text-info"}>
-                        <h5 className={"card-title"}>{props.name} <span className="badge bg-info">Unknown</span></h5>
-                        <p className={"card-text"}>
-                            {props.name} is located in {props.location.name}, but is originally from {props.origin.name}. {props.name} played in {props.episode.length} Episodes! This is amazing!
-                        </p>
-                        <button type="button" className="btn btn-secondary">Episodes</button>
-                    </div>
-                </div>
-            </div>
-        )
+
+    function onClickBtn(){
+        props.deleteCharacter(props.character.id)
     }
+
+    return(
+        <div className={"col"}>
+            <div className="card h-100">
+                <img src={props.character.image} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <h5 className="card-title"><a href={props.character.url}>{props.character.name}</a></h5>
+                    <p className={"card-subtitle"}><span className={props.character.status}><i className={"fa-solid fa-circle"}></i></span> {props.character.status} - {props.character.species}</p>
+                    <br/>
+                    <p className="card-text"><span className={"text-muted"}>Last known Location:</span> <br/>{props.character.location.name}</p>
+                </div>
+                <div className={"card-footer"}>
+                    <button className={"btn btn-danger"} onClick={onClickBtn}>DELETE</button>
+                </div>
+            </div>
+        </div>
+    )
 }
