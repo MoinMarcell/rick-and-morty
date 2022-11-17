@@ -1,34 +1,22 @@
 import React from "react";
 import Card from "../card/Card";
 import "../css/Gallery.css"
+import {Character} from "../model/Character";
 
 type GalleryProps = {
-    characters: {
-        id: number,
-        name: string,
-        image: string,
-        status: string,
-        url: string,
-        species: string,
-        gender: string,
-        origin: {
-            name: string
-        },
-        episode: string[],
-        location: {
-            name: string
-        }
-    }[]
+    characters: Character[],
+    deleteCharacter(id: number): void
 }
 
 export default function Gallery(props: GalleryProps){
+
     const characterComponent = props.characters.map((character) => {
-        return <Card location={character.location} episode={character.episode} origin={character.origin} gender={character.gender} species={character.species} url={character.url} key={character.id} name={character.name} image={character.image} status={character.status}/>
+            return <Card character={character} deleteCharacter={props.deleteCharacter}/>
     })
 
     return(
-        <div className={"row row-cols-2 row-cols-4 row-cols-md-6 g-3 Gallery"}>
-                {characterComponent}
-            </div>
+        <div className={"row row-cols-1 row-cols-md-4 g-3 mt-3"}>
+            {characterComponent}
+        </div>
     )
 }
