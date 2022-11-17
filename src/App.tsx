@@ -1,16 +1,32 @@
-import {RICK_AND_MORTY_CHARACTERS} from "./RickAndMortyCharacters";
 import Gallery from "./components/gallery/Gallery";
 import "./App.css"
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
+import {Character} from "./components/model/Character";
+import axios from "axios";
 
 export default function App() {
+    const [characters, setCharacters] = useState<Character[]>([])
+
+    useEffect(() => {
+        getCharacters()
+    }, [])
+
+    function getCharacters() {
+        axios.get('https://rickandmortyapi/api/character')
+            .then((response) => {
+                //console.log(response.data.results)
+                setCharacters(response.data.results)
+            })
+    }
+
+
     const [search, setSearch] = useState("")
 
     const safeSearch = (event: ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value)
     }
 
-    const [filterCharacter, setFilterCharacter] = useState(RICK_AND_MORTY_CHARACTERS)
+    const [filterCharacter, setFilterCharacter] = useState(characters)
 
     const deleteCharacter = (id: number) => {
         setFilterCharacter(filterCharacter.filter(character => character.id !== id))
